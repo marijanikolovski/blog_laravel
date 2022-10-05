@@ -20,4 +20,6 @@ class PostsController extends Controller
 
         return view('blog.show', compact('post'));
     }
+
+
 }
