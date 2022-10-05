@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\PostsController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CommentsController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -22,3 +24,5 @@ Route::get('/posts', [PostsController::class, 'index']);
 Route::get('/posts/create', [PostsController::class, 'create']);
 Route::post('/posts', [PostsController::class, 'store']);
 Route::get('/posts/{id}', [PostsController::class, 'show'])->name('blog-index');
+
+Route::post('/posts/{id}/comments', [CommentsController::class, 'store']);
