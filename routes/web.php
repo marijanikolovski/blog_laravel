@@ -3,7 +3,8 @@
 use App\Http\Controllers\PostsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CommentsController;
-
+use App\Http\Controllers\RegisterController;
+use Illuminate\Foundation\Bootstrap\RegisterProviders;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,3 +27,6 @@ Route::post('/posts', [PostsController::class, 'store']);
 Route::get('/posts/{id}', [PostsController::class, 'show'])->name('blog-index');
 
 Route::post('/posts/{id}/comments', [CommentsController::class, 'store']);
+
+Route::get('/register', [RegisterController::class, 'create']);
+Route::post('/register', [RegisterController::class, 'store']);
