@@ -8,6 +8,11 @@ use App\Models\Post;
 
 class CommentsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function store(CreateCommentRequest $request, $id)    // id post
     {
         Post::find($id)->addComment($request->validated()['body']);
