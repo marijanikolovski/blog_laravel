@@ -17,14 +17,15 @@ class RegisterController extends Controller
     {
         $validated = $request->validated();
 
-    User::create([
-        'name' => $validated['name'],
-        'email' => $validated['email'],
-        'password' => $validated['password']
-    ]);
+        $user = new User();
 
-        auth()->login(new User());
+        $user->name = $validated['name'];
+        $user->email = $validated['email'];
+        $user->password = bcrypt($validated['password']);
 
-        return redirect('/posts');
-    }
+        $user->save();
+
+        auth()->login($user);
+
+        return redirect('/posts');    }
 }

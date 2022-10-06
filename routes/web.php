@@ -3,6 +3,7 @@
 use App\Http\Controllers\PostsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CommentsController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use Illuminate\Foundation\Bootstrap\RegisterProviders;
 
@@ -30,3 +31,8 @@ Route::post('/posts/{id}/comments', [CommentsController::class, 'store']);
 
 Route::get('/register', [RegisterController::class, 'create']);
 Route::post('/register', [RegisterController::class, 'store']);
+
+Route::get('/logout', [LoginController::class, 'destroy']);
+
+Route::get('/login', [LoginController::class, 'create'])->name('login');
+Route::post('/login', [LoginController::class, 'store']);
