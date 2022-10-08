@@ -22,7 +22,7 @@ class PostsController extends Controller
 
     public function show($id)
     {
-        $post = Post::with('comments')->find($id);
+        $post = Post::with('comments', 'user')->find($id);
 
         return view('blog.show', compact('post'));
     }
@@ -39,6 +39,7 @@ class PostsController extends Controller
         Post::create([
             'title' => $validated['title'],
             'body' => $validated['body'],
+            'user_id' => auth()->id()
         ]);
 
         return redirect('/posts');
