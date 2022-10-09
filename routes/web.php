@@ -27,7 +27,7 @@ Route::get('/posts/{id}', [PostsController::class, 'show'])->name('blog-index');
 Route::post('/posts/{id}/comments', [CommentsController::class, 'store']);
 
 Route::get('/register', [RegisterController::class, 'create']);
-Route::post('/register', [RegisterController::class, 'store']);
+Route::post('/register', [RegisterController::class, 'store'])->middleware('age');
 
 Route::get('/logout', [LoginController::class, 'destroy']);
 

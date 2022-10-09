@@ -34,6 +34,11 @@
             @include('partials.error')
         @enderror
 
+        <div class="mb-3">
+            <label class="form-label" >Age</label>
+            <input class="form-control" type="number" name="age" />
+        </div>
+
         <button type="submit" class="btn brn-primary">Submit</button>
     </form>
 @endsection
