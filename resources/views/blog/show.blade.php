@@ -5,7 +5,12 @@
 @section('content')
     <article class="blog-post">
         <h2 class="blog-post-title mb-1">{{ $post->title }}</h2>
-        <p>{{ $post->created_at }} by {{ $post->user ? $post->user->name : 'Anonims'}}</p>
+        @if ($post->user)
+            <a href="/users/{{ $post->user->id }}">{{ $post->user->name }}</a>
+    @else
+        {{ 'Anon' }}
+    @endif
+
         <p>{{ $post->body }}</p>
     </article>
 

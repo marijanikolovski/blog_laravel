@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\CreateCommentRequest;
+use App\Mail\CommentRecived;
 use App\Models\Post;
+use Illuminate\Support\Facades\Mail;
 
 class CommentsController extends Controller
 {
@@ -15,7 +17,13 @@ class CommentsController extends Controller
     
     public function store(CreateCommentRequest $request, $id)    // id post
     {
-        Post::find($id)->addComment($request->validated()['body']);
+        $post = Post::find($id);
+
+        $post->addComment($request->validated()['body']);
+
+        if($post->user) {
+            Mail::to($post->user)->send(new CommentRecived($post));
+        }
 
         return redirect()->back();
     }
