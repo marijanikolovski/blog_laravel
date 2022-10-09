@@ -32,6 +32,8 @@ class RegisterController extends Controller
 
         auth()->login($user);
 
+        session()->flash('message', 'Registration is successful');
+
         return redirect('/posts');    
     }
 }

@@ -83,6 +83,12 @@
 
     @include('partials.header')
 
+    @if (session('message'))
+      <div class="alert alert-success">
+          {{ session('message') }}
+      </div>
+  @endif
+
   <div class="nav-scroller py-1 mb-2">
     <nav class="nav d-flex justify-content-between">
       <a class="p-2 link-secondary" href="/posts">Posts</a>
