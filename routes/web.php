@@ -7,6 +7,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use Illuminate\Foundation\Bootstrap\RegisterProviders;
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\TagsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +24,8 @@ Route::get('/posts', [PostsController::class, 'index']);
 Route::get('/posts/create', [PostsController::class, 'create']);
 Route::post('/posts', [PostsController::class, 'store']);
 Route::get('/posts/{id}', [PostsController::class, 'show'])->name('blog-index');
+
+Route::get('/posts/tags/{tag}', [TagsController::class, 'index']);
 
 Route::post('/posts/{id}/comments', [CommentsController::class, 'store']);
 
